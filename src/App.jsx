@@ -19,6 +19,8 @@ function App() {
   }
 
   // form action is set to the makeRecipe function above.
+  // the ingredients on hand only get displayed when the ingredients length is greater than (0) i.e. the user has added a 0. If empty nothing will be displayed (null).
+  // if the ingredients length is greater than 3 the ready for a recipe section is displayed to the user.
   return (
     <main>
       <form action={makeRecipe} className="add-ingredient-form">
