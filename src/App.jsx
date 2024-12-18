@@ -4,6 +4,14 @@ import "./App.css";
 function App() {
   const [ingredients, setIngredients] = React.useState([]);
 
+  // useState for getRecipe
+  const [recipeShown, setRecipeShown] = React.useState(false);
+
+  // Flipping the value of of the recipe from false to true and back from true to fales when clicked again.
+  function toggleRecipeShown() {
+    setRecipeShown((prevShown) => !prevShown);
+  }
+
   // mapping through each ingredinet.
   // giving each ingredient a list item along with adding the actual ingredient so it is then returned below in the un ordered list.
   const ingredientsListItems = ingredients.map((ingredient) => (
@@ -44,11 +52,12 @@ function App() {
                 <h3>Ready for a recipe?</h3>
                 <p>Generate a recipe from your list of ingredients.</p>
               </div>
-              <button>Get a recipe</button>
+              <button onClick={toggleRecipeShown}>Get a recipe</button>
             </div>
           )}
         </section>
       ) : null}
+      {recipeShown && <section></section>}
     </main>
   );
 }
