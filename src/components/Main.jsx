@@ -7,7 +7,7 @@ function Main() {
   // useState for getRecipe
   const [recipeShown, setRecipeShown] = React.useState(false);
 
-  // Flipping the value of of the recipe from false to true and back from true to fales when clicked again.
+  // flipping the value of of the recipe from false to true and back from true to fales when clicked again.
   function toggleRecipeShown() {
     setRecipeShown((prevShown) => !prevShown);
   }
@@ -23,7 +23,7 @@ function Main() {
   // form action is set to the makeRecipe function above.
   // the ingredientsList only gets displayed when the ingredients length is greater than (0) i.e. the user has added a 0. If empty nothing will be displayed nothing.
   // passing the ingredients and toggleRecipeShown down as props to the ingredientList.
-  // Adding the Recipe component in and it will only be displayed if RecipeShow is true.
+  // adding the Recipe component in and it will only be displayed if RecipeShow is true.
   return (
     <main>
       <form action={makeRecipe} className="add-ingredient-form">
@@ -35,9 +35,12 @@ function Main() {
         />
         <button>Add ingredient</button>
       </form>
-      {ingredients.length > 0 && <IngredientsList
-      ingredients={ingredients}
-      toggleRecipeShown={toggleRecipeShown}/>}
+      {ingredients.length > 0 && (
+        <IngredientsList
+          ingredients={ingredients}
+          toggleRecipeShown={toggleRecipeShown}
+        />
+      )}
       {recipeShown && <Recipe />}
     </main>
   );
