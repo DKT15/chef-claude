@@ -1,5 +1,13 @@
+import ReactMarkdown from "react-markdown";
+
+// Added react markdown to format text from the API. The section will be announced for those that use assistive technologes as the aria-live property has been announced.
 function ClaudeRecipe(props) {
-  return <section>{props.recipe}</section>;
+  return (
+    <section className="suggested-recipe-container" aria-live="polite">
+      <h2>Chef Claude Recommends:</h2>
+      <ReactMarkdown>{props.recipe}</ReactMarkdown>
+    </section>
+  );
 }
 
 export default ClaudeRecipe;
