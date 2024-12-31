@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import "../styles/ClaudeRecipe.css";
 
 // Added react markdown to format text from the API. The section will be announced for those that use assistive technologes as the aria-live property has been announced.
 function ClaudeRecipe(props) {

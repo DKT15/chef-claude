@@ -1,7 +1,7 @@
-import React from "react";
 import IngredientsList from "./IngredientsList";
 import ClaudeRecipe from "./ClaudeRecipe";
-import { getRecipeFromChefClaude } from "../ai";
+import { getRecipeFromChefClaude } from "../assets/ai";
+import "../styles/Main.css";
 
 function Main() {
   const [ingredients, setIngredients] = React.useState([]);
