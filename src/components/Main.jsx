@@ -1,3 +1,4 @@
+import React from "react";
 import IngredientsList from "./IngredientsList";
 import ClaudeRecipe from "./ClaudeRecipe";
 import { getRecipeFromChefClaude } from "../assets/ai";

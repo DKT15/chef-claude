@@ -1,7 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-const anthropicApiKey = `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`;
-
 //When interacting with AI, it needs to be given a sysytem prompt.
 const SYSTEM_PROMPT = `
 You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in markdown to make it easier to render to a web page
@@ -9,7 +7,7 @@ You are an assistant that receives a list of ingredients that a user has and sug
 
 // Passing the api key and becuase it is being passed froma browser dangerouslyAllowBrowser is set to true.
 const anthropic = new Anthropic({
-  apiKey: anthropicApiKey,
+  apiKey: process.env.ANTHROPICAPI,
   dangerouslyAllowBrowser: true,
 });
 

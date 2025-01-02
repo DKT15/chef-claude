@@ -4,10 +4,12 @@ import Header from "./components/Header";
 import "./App.css";
 
 function App() {
-  <>
-    <Header />
-    <Main />
-  </>;
+  return (
+    <>
+      <Header />
+      <Main />
+    </>
+  );
 }
 
 export default App;
