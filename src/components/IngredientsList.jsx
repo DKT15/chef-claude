@@ -2,7 +2,7 @@ import "../styles/IngredientsList.css";
 
 function IngredientsList(props) {
   // mapping through each ingredinet.
-  // giving each ingredient a list item along with adding the actual ingredient so it is then returned below in the un ordered list.
+  // giving each ingredient a list item along with adding the actual ingredient so it is then returned below in the unordered list.
   const ingredientsListItems = props.ingredients.map((ingredient) => (
     <li key={ingredient}>{ingredient}</li>
   ));
