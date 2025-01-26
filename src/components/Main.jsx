@@ -10,6 +10,17 @@ function Main() {
   // useState for recipe.
   const [recipe, setRecipe] = React.useState("");
 
+  //No need for a setter function as it can be mutated directly.
+  const recipeSection = React.useRef(null);
+
+  // If recipe is not empty and the recipeSection is not equal to null, then the scorllIntoView method will be ran.
+  // The side effect will be re ran any time recipe changes. Therefore recipe is added to the dependencies array.
+  React.useEffect(() => {
+    if (recipe !== "" && recipeSection.current !== null) {
+      recipeSection.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [recipe]);
+
   // when the button is clicked, a recipe is being retrieved. The recipe is being passed a list of ingredients from above.]
   // the function being pulled in below is an async function, therefore to unpack the promise , an async await is used below.
   async function getRecipe() {
@@ -42,7 +53,11 @@ function Main() {
         <button>Add ingredient</button>
       </form>
       {ingredients.length > 0 && (
-        <IngredientsList ingredients={ingredients} getRecipe={getRecipe} />
+        <IngredientsList
+          ref={recipeSection}
+          ingredients={ingredients}
+          getRecipe={getRecipe}
+        />
       )}
       {recipe && <ClaudeRecipe recipe={recipe} />}
     </main>
