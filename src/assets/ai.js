@@ -1,6 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-const AnthropicAPI = process.env.ANTHROPIC_API_KEY;
+const AnthropicAPI = ANTHROPIC_API_KEY;
 
 console.log(AnthropicAPI);
 
