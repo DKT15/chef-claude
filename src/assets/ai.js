@@ -1,6 +1,8 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-const AnthropicAPI = "ANTHROPIC_API_KEY";
+const AnthropicAPI = process.env.ANTHROPIC_API_KEY;
+
+console.log(AnthropicAPI);
 
 //When interacting with AI, it needs to be given a sysytem prompt.
 const SYSTEM_PROMPT = `
