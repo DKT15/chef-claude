@@ -1,19 +1,23 @@
-// anthropic.js (serverless function)
+// This is the code for the serverless function.
+
 import Anthropic from "@anthropic-ai/sdk";
 
+// Netlify expects the export nfunction name to be handler.
 export async function handler(event) {
   try {
-    // Parse the POST body from React
+    // ingredients equals the data from the body. The data is being converted into a js objeect.
+    // Destructuring the ingredients
+    // Expecting an array from the body.
     const { ingredients } = JSON.parse(event.body);
 
+    //If there isn't any ingredients or an array of ingredients then an error will be returned.
     if (!ingredients || !Array.isArray(ingredients)) {
       return {
-        statusCode: 400,
         body: JSON.stringify({ error: "Ingredients array is required" }),
       };
     }
 
-    // Your system prompt
+    // When interacting with AI, it needs to be given a system prompt.
     const SYSTEM_PROMPT = `
 You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in markdown to make it easier to render to a web page
 `;
@@ -23,10 +27,10 @@ You are an assistant that receives a list of ingredients that a user has and sug
       apiKey: process.env.ANTHROPIC_API_KEY,
     });
 
-    // Join ingredients into a string
+    // Join ingredients into a string, taking them out of an array format for the user to see clearly.
     const ingredientsString = ingredients.join(", ");
 
-    // Call the Anthropic API
+    // Calling the Anthropic API and getting anthropics reponse with the await below.
     const response = await anthropic.messages.create({
       model: "claude-3-haiku-20240307",
       max_tokens: 1024,
@@ -40,13 +44,11 @@ You are an assistant that receives a list of ingredients that a user has and sug
     });
 
     return {
-      statusCode: 200,
-      body: JSON.stringify({ content: response }),
+      body: JSON.stringify({ content: response.content[0].text }),
     };
   } catch (err) {
     console.error(err);
     return {
-      statusCode: 500,
       body: JSON.stringify({ error: err.message }),
     };
   }
