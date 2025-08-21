@@ -3,7 +3,8 @@
 // function accepts the array of ingredients.
 export async function getRecipeFromChefClaude(ingredientsArr) {
   // Sends HTTP request to the netlify function and await waits until it gets a response.
-  // Post request is used as data is being sent to the body.
+  // Post request is used as data (ingredients array) is being sent to the request body.
+  // The netlify function takes the ingredients and makes a real API request to Anthropic with the hidden key.
   // header tells server the body is JSON so it parses it correctly.
   // In the body,data is converted to JSON formatted string, by wrapping with object and giving it a key value pair.
   const res = await fetch("/.netlify/functions/anthropic", {
