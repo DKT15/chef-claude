@@ -2,7 +2,7 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 
-// Netlify expects the export nfunction name to be handler.
+// Netlify expects the export function name to be handler.
 export async function handler(event) {
   try {
     // ingredients equals the data from the body. The data is being converted into a js objeect.
