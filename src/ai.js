@@ -25,5 +25,5 @@ export async function getRecipeFromChefClaude(ingredientsArr) {
   // Using optional chaining. Only looking for content if message exists
   // Only looing for text if the first item exists
   // If everything exists then the recipe will be displayed otherwise the default is an empty string.
-  return msg.content?.[0]?.text || "";
+  return msg.content?.[0]?.text || console.log("nothing"); //issue is here
 }

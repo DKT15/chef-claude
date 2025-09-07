@@ -13,6 +13,7 @@ export async function handler(event) {
     //If there isn't any ingredients or an array of ingredients then an error will be returned.
     if (!ingredients || !Array.isArray(ingredients)) {
       return {
+        statusCode: 400,
         body: JSON.stringify({ error: "Ingredients array is required" }),
       };
     }
@@ -44,11 +45,13 @@ You are an assistant that receives a list of ingredients that a user has and sug
     });
 
     return {
+      statusCode: 200,
       body: JSON.stringify({ content: response.content[0].text }),
     };
   } catch (err) {
     console.error(err);
     return {
+      statusCode: 500,
       body: JSON.stringify({ error: err.message }),
     };
   }
