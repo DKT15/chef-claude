@@ -13,17 +13,20 @@ export async function getRecipeFromChefClaude(ingredientsArr) {
     body: JSON.stringify({ ingredients: ingredientsArr }),
   });
 
+  console.log(res);
+
   // the response from JSON is now in msg.
   const msg = await res.json();
 
-  // If the resonse is not okay then an error will be thrown.
+  console.log(msg);
+
+  // If the response is not okay then an error will be thrown.
   if (!res.ok) {
     console.error(msg);
     throw new Error(msg.error || "Failed to get recipe from Claude");
   }
 
   // Using optional chaining. Only looking for content if message exists
-  // Only looing for text if the first item exists
   // If everything exists then the recipe will be displayed otherwise the default is an empty string.
-  return msg.content?.[0]?.text || console.log("nothing"); //issue is here
+  return msg?.content || console.log("");
 }
