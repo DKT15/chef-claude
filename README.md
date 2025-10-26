@@ -32,7 +32,7 @@ Chef Claude is is a dynamic and user-friendly app that allows users to enter in 
 
 ## Screenshots
 
-![Screenshot of Chef Claude UI](assets/images/chef-claude.png)
+![Screenshot of Chef Claude UI](assets/chef-claude.png)
 
 ## Deployment
 
